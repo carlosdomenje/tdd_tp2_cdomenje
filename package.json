@@ -1,0 +1,17 @@
+{
+  "name": "lista",
+  "version": "1.0.0",
+  "description": "Lista ordenada de pares Clave:Valor",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "coverage": "nyc --reporter=html mocha"
+  },
+  "author": "Carlos Domenje (carlosdomenje@gmail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.2.0",
+    "nyc": "^15.1.0"
+  }
+}
