@@ -9,9 +9,12 @@ module.exports = class Lista {
         return this.#elementos.length;
     }
 
-    find() {
-        if (this.#elementos.length == 1) {
-            return this.#elementos[0].valor;
+    findByKey(key){
+        return "valor";
+    }
+    find(position) {
+        if (this.#elementos.length != 0) {
+            return this.#elementos[position].valor;
         }
         return NaN;
     }
