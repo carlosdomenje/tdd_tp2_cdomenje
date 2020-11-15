@@ -9,6 +9,19 @@
  *  v Cuando se agrega un elemento al final la lista de claves esta ordenada.
  */
 
+/* 
+Requisitos escritos en clase:
+
+1.  v Almacena pares clave:valor. 
+2.  v Las claves deben ser únicas.
+3.  v Las claves son cadenas de texto.
+4.  v Se debe poder recuperar un valor a partir de una clave.
+5.  v Se debe poder actualizar el valor asociado a una clave.
+6.  v Se debe poder recuperar la cantidad de elementos almacenados en la lista.
+7.  v Se debe poder recuperar una lista ordenada con las claves almacenadas en la lista.
+8.  v Se puede borrar una pareja a partir de la clave.
+*/
+
 const assert = require("chai").assert;
 const Lista = require("../src/lista.js");
 
@@ -61,6 +74,8 @@ describe("cuado se agrega un elemento" , function() {
     it("al final la lista de claves esta ordenada", function() {
         assert.equal(lista.find(lista.count() - 1 ), "valor3");
     });
+
+   
     
 })
 
@@ -77,6 +92,29 @@ describe("cuado se agrega una clave que ya esta en la lista" , function() {
     it("se actualiza el valor correspondiente.", function() {
         lista.add("clave2", "valorNuevo");
         assert.equal(lista.find(1), "valorNuevo");
+    });
+
+    it("Devuelve una lista ordenada", function(){
+        var orderedList = [ "avclave", "clave", "clave2", "clave3", "fclave2", "zclave3" ];
+        lista.add("avclave", "valor");
+        lista.add("fclave2", "valor2");
+        lista.add("zclave3", "valor3");
+        assert.deepEqual(lista.sortedList(), orderedList);
+    });
+    
+})
+
+/* Creo otra prueba para poder borrar elementos.
+ */
+describe("a partir de una clave" , function() {
+    var lista = new Lista();
+    lista.add("clave", "valor");
+    lista.add("clave2", "valor2");
+    lista.add("clave3", "valor3");
+
+
+    it("se puede borrar un elemento del array", function() {
+        assert.equal(lista.eraseItem("clave2"), true);
     });
     
 })
