@@ -64,6 +64,9 @@ describe("cuado se agrega un elemento" , function() {
     
 })
 
+/* Creo otro describe ya que para estos test asumo que la lista no esta vacia y las operaciones
+se realizan con las claves.
+ */
 describe("cuado se agrega una clave que ya esta en la lista" , function() {
     var lista = new Lista();
     lista.add("clave", "valor");

@@ -4,11 +4,11 @@ module.exports = class Lista {
     constructor() {
         this.#elementos = [];
     }
-
+    /* Retorna la cantidad total de elementos que tiene el array. */
     count() {
         return this.#elementos.length;
     }
-
+    /* Busca un valor por clave */
     findByKey(key){
         var element;
         this.#elementos.forEach(function(elemento, indice){
@@ -18,14 +18,15 @@ module.exports = class Lista {
         })
         return element;
     }
-    
+    /* Busca en el array por posicion del mismo mientras no sea 0 la cantidad 
+    de elementos */
     find(position) {
         if (this.#elementos.length != 0) {
             return this.#elementos[position].valor;
         }
         return NaN;
     }
-
+    /* Agrega un nuevo par clave - valor, teniendo en cuenta que no exista una clave */
     add(clave, valor) {
         var key = this.findByKey(clave);
        
