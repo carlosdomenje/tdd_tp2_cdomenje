@@ -10,8 +10,15 @@ module.exports = class Lista {
     }
 
     findByKey(key){
-        return "valor";
+        var element;
+        this.#elementos.forEach(function(elemento, indice){
+            if (elemento.clave == key){
+                element = elemento.valor;
+            }
+        })
+        return element;
     }
+    
     find(position) {
         if (this.#elementos.length != 0) {
             return this.#elementos[position].valor;
@@ -20,7 +27,17 @@ module.exports = class Lista {
     }
 
     add(clave, valor) {
-        this.#elementos.push({clave, valor});
+        var key = this.findByKey(clave);
+       
+        if (key != null){
+            this.#elementos.forEach(function(element, indice){
+                if (element.clave == clave){
+                    element.valor = valor;                 
+                }
+            })
+        }else{
+            this.#elementos.push({clave, valor});
+        }
     }
 };
 

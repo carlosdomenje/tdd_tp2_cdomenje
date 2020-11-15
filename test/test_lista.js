@@ -5,8 +5,8 @@
  *  v Cuando se agrega un elemento a una lista vacía se puede recuperar el valor a partir de la clave.
  * Cuando se agrega una clave que ya está en la lista se actualiza el valor correspondiente.
  *  v Cuando se agregan un elemento a una lista vacía la lista de claves esta ordenada.
- * Cuando se agrega un elemento al principio la lista de claves esta ordenada.
- * Cuando se agrega un elemento al final la lista de claves esta ordenada.
+ *  v Cuando se agrega un elemento al principio la lista de claves esta ordenada.
+ *  v Cuando se agrega un elemento al final la lista de claves esta ordenada.
  */
 
 const assert = require("chai").assert;
@@ -44,5 +44,36 @@ describe("cuado se agrega un elemento a una lista vacía" , function() {
     });
 })
 
+/* Creo otro describe ya que para estos test asumo que la lista no esta vacia y contiene
+mas de un elemento
+ */
+describe("cuado se agrega un elemento" , function() {
+    var lista = new Lista();
+    lista.add("clave", "valor");
+    lista.add("clave2", "valor2");
+    lista.add("clave3", "valor3");
 
 
+    it("al principio la lista de claves esta ordenada", function() {
+        assert.equal(lista.find(0), "valor");
+    });
+
+    it("al final la lista de claves esta ordenada", function() {
+        assert.equal(lista.find(lista.count() - 1 ), "valor3");
+    });
+    
+})
+
+describe("cuado se agrega una clave que ya esta en la lista" , function() {
+    var lista = new Lista();
+    lista.add("clave", "valor");
+    lista.add("clave2", "valor2");
+    lista.add("clave3", "valor3");
+
+
+    it("se actualiza el valor correspondiente.", function() {
+        lista.add("clave2", "valorNuevo");
+        assert.equal(lista.find(1), "valorNuevo");
+    });
+    
+})
