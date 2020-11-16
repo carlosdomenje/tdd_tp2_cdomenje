@@ -1,6 +1,6 @@
-# Ejemplo de TDD en NodeJS
+# TP 2 de TDD en NodeJS
 
-Este repositorio presenta la implementación de una lista de pares clave:valor implementada en Javacript como ejemplo de la aplicación de la metogología de Test Drivement Development.
+Trabajo practico Nro 2 de TDD en NodeJS - Testing De Sistemas de Internet de las Cosas
 
 ## Requisitos
 
