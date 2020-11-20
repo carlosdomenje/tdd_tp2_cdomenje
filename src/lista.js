@@ -51,13 +51,14 @@ module.exports = class Lista {
         }
     }
 
-    /* Devuelvo una lista ordenadas por clave */
+    /* Devuelvo una lista ordenadas de claves  */
     sortedList(){
         var srtLst = [];
         if (this.count() != 0){
             this.#elementos.forEach(function(element){
-                srtLst.push(element.clave);
+                srtLst.push(element.clave); // Solamente almaceno la clave en un nuevo array
             });
+            /* Devuelvo la lista de claves ordenadas */
             return srtLst.sort()
         }else{
             return NaN;

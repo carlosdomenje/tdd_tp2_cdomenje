@@ -61,18 +61,19 @@ describe("cuado se agrega un elemento a una lista vacía" , function() {
 mas de un elemento
  */
 describe("cuado se agrega un elemento" , function() {
+    var orderedKeys = [ "aaaaaa", "clave", "clave3", "zzzzz" ]; // Lista de claves esperada
     var lista = new Lista();
+    lista.add("zzzzz", "valor2"); 
     lista.add("clave", "valor");
-    lista.add("clave2", "valor2");
     lista.add("clave3", "valor3");
-
+    lista.add("aaaaaa", "valor4");
 
     it("al principio la lista de claves esta ordenada", function() {
-        assert.equal(lista.find(0), "valor");
+        assert.deepEqual(lista.sortedList(), orderedKeys);
     });
 
     it("al final la lista de claves esta ordenada", function() {
-        assert.equal(lista.find(lista.count() - 1 ), "valor3");
+        assert.deepEqual(lista.sortedList(), orderedKeys);
     });
 
    
@@ -94,11 +95,13 @@ describe("cuado se agrega una clave que ya esta en la lista" , function() {
         assert.equal(lista.find(1), "valorNuevo");
     });
 
-    it("Devuelve una lista ordenada", function(){
+    it("Devuelve una lista ordenada de claves", function(){
         var orderedList = [ "avclave", "clave", "clave2", "clave3", "fclave2", "zclave3" ];
+        
         lista.add("avclave", "valor");
         lista.add("fclave2", "valor2");
         lista.add("zclave3", "valor3");
+        
         assert.deepEqual(lista.sortedList(), orderedList);
     });
     
