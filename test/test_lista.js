@@ -61,18 +61,22 @@ describe("cuado se agrega un elemento a una lista vacía" , function() {
 mas de un elemento
  */
 describe("cuado se agrega un elemento" , function() {
-    var orderedKeys = [ "aaaaaa", "clave", "clave3", "zzzzz" ]; // Lista de claves esperada
+    
     var lista = new Lista();
-    lista.add("zzzzz", "valor2"); 
+    lista.add("xxxxx", "valor2"); 
     lista.add("clave", "valor");
     lista.add("clave3", "valor3");
-    lista.add("aaaaaa", "valor4");
+    lista.add("bbbbb", "valor4");
 
     it("al principio la lista de claves esta ordenada", function() {
+        var orderedKeys = [ "bbbbb", "clave", "clave3", "xxxxx", "zzzzz" ]; // Lista de claves esperada
+        lista.add("zzzzz", "valorZ");
         assert.deepEqual(lista.sortedList(), orderedKeys);
     });
 
     it("al final la lista de claves esta ordenada", function() {
+        var orderedKeys = [ "aaaaa","bbbbb", "clave", "clave3", "xxxxx", "zzzzz" ]; // Lista de claves esperada
+        lista.add("aaaaa", "valorA");
         assert.deepEqual(lista.sortedList(), orderedKeys);
     });
 
@@ -117,7 +121,8 @@ describe("a partir de una clave" , function() {
 
 
     it("se puede borrar un elemento del array", function() {
-        assert.equal(lista.eraseItem("clave2"), true);
+        lista.eraseItem("clave2");
+        assert.isUndefined(lista.findByKey("clave2"));
     });
     
 })
