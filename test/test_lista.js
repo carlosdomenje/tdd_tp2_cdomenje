@@ -5,8 +5,7 @@
  *  v Cuando se agrega un elemento a una lista vacía se puede recuperar el valor a partir de la clave.
  *  v Cuando se agrega una clave que ya está en la lista se actualiza el valor correspondiente.
  *  v Cuando se agregan un elemento a una lista vacía la lista de claves esta ordenada.
- *  v Cuando se agrega un elemento al principio la lista de claves esta ordenada.
- *  v Cuando se agrega un elemento al final la lista de claves esta ordenada.
+ *  v Cuando se agrega un elemento a la lista de claves esta ordenada.
  */
 
 /* 
@@ -64,23 +63,16 @@ describe("cuado se agrega un elemento" , function() {
     
     var lista = new Lista();
     lista.add("xxxxx", "valor2"); 
+    lista.add("zzzzz", "valorZ");
     lista.add("clave", "valor");
     lista.add("clave3", "valor3");
     lista.add("bbbbb", "valor4");
+    lista.add("aaaaa", "valorA");
 
-    it("al principio la lista de claves esta ordenada", function() {
-        var orderedKeys = [ "bbbbb", "clave", "clave3", "xxxxx", "zzzzz" ]; // Lista de claves esperada
-        lista.add("zzzzz", "valorZ");
-        assert.deepEqual(lista.sortedList(), orderedKeys);
-    });
-
-    it("al final la lista de claves esta ordenada", function() {
+    it("la lista de claves esta ordenada", function() {
         var orderedKeys = [ "aaaaa","bbbbb", "clave", "clave3", "xxxxx", "zzzzz" ]; // Lista de claves esperada
-        lista.add("aaaaa", "valorA");
         assert.deepEqual(lista.sortedList(), orderedKeys);
     });
-
-   
     
 })
 
@@ -94,10 +86,7 @@ describe("cuado se agrega una clave que ya esta en la lista" , function() {
     lista.add("clave3", "valor3");
 
 
-    it("se actualiza el valor correspondiente.", function() {
-        lista.add("clave2", "valorNuevo");
-        assert.equal(lista.find(1), "valorNuevo");
-    });
+    
 
     it("Devuelve una lista ordenada de claves", function(){
         var orderedList = [ "avclave", "clave", "clave2", "clave3", "fclave2", "zclave3" ];
@@ -107,6 +96,11 @@ describe("cuado se agrega una clave que ya esta en la lista" , function() {
         lista.add("zclave3", "valor3");
         
         assert.deepEqual(lista.sortedList(), orderedList);
+    });
+
+    it("se actualiza el valor correspondiente.", function() {
+        lista.add("clave2", "valorNuevo");
+        assert.equal(lista.find(1), "valorNuevo");
     });
     
 })
