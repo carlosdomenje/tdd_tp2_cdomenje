@@ -11,15 +11,28 @@ module.exports = class Lista {
     count() {
         return this.#elementos.length;
     }
-    /* Busca un valor por clave */
+    /* Busca por clave  y devuelve el inidice*/
     find(key){
-        var element;
+        var position = NaN;
         this.#elementos.forEach(function(elemento, indice){
             if (elemento.clave == key){
-                element = elemento.valor;
+                position = indice;
+                
             }
         })
-        return element;
+        
+        return position;
+    }
+
+    getValue(key){
+        var pos = this.find(key);
+        if (pos >= 0){
+            return (this.#elementos[pos].valor);
+        }else{
+            return undefined;
+        }
+        
+
     }
    
     /* Agrega un nuevo par clave - valor, teniendo en cuenta que no exista una clave
@@ -33,12 +46,8 @@ module.exports = class Lista {
         {
             return NaN;
         }
-        if (key != null){
-            this.#elementos.forEach(function(element, indice){
-                if (element.clave == clave){
-                    element.valor = valor;                 
-                }
-            })
+        if (key >= 0 ){
+            this.#elementos[key].valor = valor;
         }else{
             this.#elementos.push({clave, valor});
         }
@@ -60,12 +69,7 @@ module.exports = class Lista {
 
     /* Borro un elemento a partir de una clave */
     eraseItem(key){
-        var item = -1;
-        this.#elementos.forEach(function(elemento, indice){
-            if (elemento.clave == key){
-               item = indice;
-            }
-        });
+        var item = this.find(key);
         if (item >= 0){
             this.#elementos.splice(item);
             return true;

@@ -44,21 +44,13 @@ describe("cuado se agrega un elemento a una lista vacía" , function() {
 
     lista.add("clave", "valor");
 
-
-
     it("hay un elemento", function() {
         assert.equal(lista.count(), 1);
     });
 
     it("se puede recuperar el valor a partir de la clave", function() {
-        assert.equal(lista.find("clave"), "valor");
+        assert.equal(lista.getValue("clave"), "valor");
     });
-
-    /* No tiene sentido, hay un solo elemento en la lista... */
-    /* it("la lista de claves esta ordenada", function(){
-
-        assert.equal(lista.find("clave"), "clave" );
-    }); */
 })
 
 /* Creo otro describe ya que para estos test asumo que la lista no esta vacia y contiene
@@ -102,7 +94,7 @@ describe("cuado se agrega una clave que ya esta en la lista" , function() {
 
     it("se actualiza el valor correspondiente.", function() {
         lista.add("clave2", "valorNuevo");
-        assert.equal(lista.find("clave2"), "valorNuevo");
+        assert.equal(lista.getValue("clave2"), "valorNuevo");
     });
     
 })
@@ -118,7 +110,7 @@ describe("a partir de una clave" , function() {
 
     it("se puede borrar un elemento del array", function() {
         lista.eraseItem("clave2");
-        assert.isUndefined(lista.find("clave2"));
+        assert.isUndefined(lista.getValue("clave2"));
     });
     
 })
